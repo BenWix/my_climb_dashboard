@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
 
+  has_many :comments
+  has_many :posts
+
 
   def self.from_omniauth(auth)
     # binding.pry
