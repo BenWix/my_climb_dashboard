@@ -33,11 +33,23 @@ class PostsController < ApplicationController
     end
 
     def edit 
-
+        unless current_user == @post.user
+            flash[:alert] = "This is not your post, you do not have permission to edit it."
+            redirect_to root_path
+        end
     end
 
     def update 
-
+        if @post.user == current_user
+            @post.update(post_params)
+            if @post.save 
+                redirect_to @post  
+            else 
+                render :edit
+            end
+        else 
+            redirect_to root_path
+        end
     end
 
     def delete 

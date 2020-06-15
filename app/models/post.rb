@@ -7,4 +7,13 @@ class Post < ApplicationRecord
     validates :content, length: {in: 20..2000}
     validates :content, presence: true
     validates_associated :user
+
+    def preview 
+        preview_length = 150
+        if content.length < preview_length 
+            content
+        else 
+            content[0..preview_length]
+        end
+    end
 end
