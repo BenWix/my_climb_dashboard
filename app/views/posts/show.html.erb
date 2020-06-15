@@ -1,0 +1,8 @@
+<h1><strong><%= @post.title %></strong></h1>
+<h3>Author: <%= link_to @post.user.name, @post.user %></h3>
+<p><%= @post.content %></p>
+
+<% if current_user == @post.user %>
+    <p>Edit Post</p>
+<% end %>
+<p>Comments coming soon</p>

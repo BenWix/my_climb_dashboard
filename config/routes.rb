@@ -9,5 +9,10 @@ Rails.application.routes.draw do
       get 'signup', to: 'devise/registrations#new'
     end
 
-    resources :users
+    resources :users, only: [:show, :edit, :update] do 
+
+      resources :posts, only: [:index, :new, :create]
+    end
+
+    resources :posts
 end

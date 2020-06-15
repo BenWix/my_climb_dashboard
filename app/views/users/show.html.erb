@@ -1,1 +1,18 @@
-<h1>Welcome to <% @user.name %>'s page</h1>
+<h1>Welcome to <%= @user.name %>'s page</h1>
+<% if @user == current_user %>
+    <%= link_to 'New Post', new_user_post_path(current_user) %>
+    <br>
+    <% if @user.name.empty? || @user.bio.empty? %>
+        <p>Your profile is incomplete, please edit your profile to fill in the missing fields</p>
+    <% end %>
+    <%= link_to 'Edit Profile', edit_user_path(@user) %>
+<% end %>
+
+<%= link_to "#{@user.name}'s posts", user_posts_path(@user) %>
+
+
+<% @posts.each do |post|%>
+    
+    <li><%= link_to post.title, post %></li>
+
+<% end %>
