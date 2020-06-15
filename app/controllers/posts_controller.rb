@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :set_post, only: [:show, :edit, :update, :delete]
+    before_action :set_post, only: [:show, :edit, :update, :destroy]
 
     def index
         if params[:user_id]
@@ -11,6 +11,10 @@ class PostsController < ApplicationController
     end
 
     def show 
+        unless @post
+            flash[:alert] = "That post does not exist"
+            redirect_to posts_path
+        end
     end
 
     def new
@@ -52,8 +56,9 @@ class PostsController < ApplicationController
         end
     end
 
-    def delete 
-    
+    def destroy 
+        @post.destroy if @post.user == current_user
+        redirect_to root_path
     end
 
 
