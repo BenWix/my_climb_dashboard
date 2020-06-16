@@ -1,0 +1,10 @@
+<h1><%= @climb.name %></h1>
+
+<h3><%= @climb.grade %></h3>
+<h3><%= @climb.climb_style %></h3>
+<h3>Log a send button Coming soon</h3>
+
+
+<% if current_user.admin %>
+  <%= link_to 'Edit Route', edit_climb_path(@climb) %>
+<% end %>

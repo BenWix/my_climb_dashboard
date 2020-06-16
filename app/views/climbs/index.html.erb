@@ -1,0 +1,9 @@
+<h1>All Routes</h1>
+<% if current_user.admin %>
+  <%= link_to "Add New Route", new_climb_path %>
+<% end %>
+<ul>
+    <% @climbs.each do |climb| %>
+        <li><%= link_to "#{climb.name} - #{climb.grade}", climb %></li>
+    <% end %>
+</ul>

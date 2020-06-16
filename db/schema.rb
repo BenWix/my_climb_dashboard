@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_141933) do
+ActiveRecord::Schema.define(version: 2020_06_15_215107) do
+
+  create_table "climbs", force: :cascade do |t|
+    t.string "name"
+    t.string "grade"
+    t.string "climb_style"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -24,6 +32,15 @@ ActiveRecord::Schema.define(version: 2020_06_15_141933) do
     t.string "title"
     t.string "content"
     t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sends", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "climb_id"
+    t.integer "attempts"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
