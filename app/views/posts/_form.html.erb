@@ -17,7 +17,7 @@
     <br>
     <div class="field<%= ' field_with_errors' if @post.errors[:content].any? %>">
     <label><strong>Post Content: </strong></label>
-    <%= f.text_area :content %>
+    <%= f.rich_text_area :content %>
     </div>
     <br>
     <%= f.submit %>
