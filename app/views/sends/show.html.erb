@@ -6,4 +6,17 @@
   <p>You can modify or delete this send</p>
 <% end %>
 
-<p>We will be able to add comments here too</p>
+<ul>
+  <% @send.send_comments.each do |comment|%>
+    <li><%= comment.content %> - <%= comment.user.name %></li>
+  <% end %>
+
+</ul>
+
+<%= form_for @send_comment do |f| %>
+    <label><strong>Comment: </strong></label>
+    <%= f.text_area :content %>
+    <br>
+    <%= f.hidden_field :send_id %>
+    <%= f.submit %>
+<% end %>
