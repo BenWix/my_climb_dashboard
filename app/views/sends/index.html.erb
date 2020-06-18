@@ -1,0 +1,11 @@
+<% if @user %>
+    <h1><%= @user.display_name %>'s sends!</h1>
+<% else %>
+    <h1>Recent_sends</h1>
+<% end %>
+
+<ul>
+    <% @sends.each do |send| %>
+        <li><%= link_to send.climb.name, user_send_path(send.user, send) %></li>
+    <% end %>
+</ul>

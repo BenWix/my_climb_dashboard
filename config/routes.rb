@@ -12,11 +12,18 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update] do 
 
       resources :posts, only: [:index, :new, :create]
+      resources :sends, only: [:index, :show, :delete]
     end
 
     resources :posts
 
     resources :comments, only: [:create]
 
-    resources :climbs, only: [:index, :show, :new, :create, :edit, :update]
-end
+    resources :climbs, only: [:index, :show, :new, :create, :edit, :update] do
+
+      resources :sends, only: [:new]
+    end 
+
+    resources :sends, only: [:index, :create]
+
+  end

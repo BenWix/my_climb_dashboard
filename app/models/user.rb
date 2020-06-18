@@ -28,5 +28,14 @@ class User < ApplicationRecord
     end
   end
 
+  def recent_sends
+    return_count = 5 
+    if self.sends.length < return_count
+      self.sends
+    else 
+      self.sends.find(:all, :order => "id desc", limit: return_count)
+    end
+  end
+
 
 end

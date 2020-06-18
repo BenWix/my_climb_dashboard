@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>My Climb Dashboard</title>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+    <body class="text-center">
+        <div>
+            <%= render "layouts/navbar" %>
+        </div>
+        <div>
+            <%= yield %>
+            <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
+        </div>
+    </body>
+</html>

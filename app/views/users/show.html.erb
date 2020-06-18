@@ -8,5 +8,12 @@
     <% end %>
     <%= link_to 'Edit Profile', edit_user_path(@user) %>
 <% end %>
+
+<h3>Latest Climbs</h3>
+<ul>
+    <% @user.recent_sends.each do |send| %>
+        <li><%= link_to 'send.climb.name', user_send_path(send) %></li>
+    <% end %>
+</ul>
 <br>
 <%= link_to "#{@user.display_name}'s posts", user_posts_path(@user) %>
