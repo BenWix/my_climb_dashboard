@@ -3,6 +3,7 @@
 <% if @user == current_user %>
     <%= link_to 'New Post', new_user_post_path(current_user) %>
     <br>
+    <%= link_to 'New Hangboard Workout', new_user_hangboard_path(current_user) %> <br>
     <% if @user.name.empty? || @user.bio.nil? || @user.bio.empty? %>
         <p>Your profile is incomplete, please edit your profile to fill in the missing fields</p>
     <% end %>

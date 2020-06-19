@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :sends
   has_many :climbs, through: :sends
   has_many :send_comments
-  has_mnay :hangboards
+  has_many :hangboards
 
   def self.from_omniauth(auth)
     # binding.pry
@@ -45,17 +45,17 @@ class User < ApplicationRecord
   end
 
   def hardest_flash 
-    sends.select{|send| send.attempts == 1}.max_by{ |x| GRADES.index(x.climb.grade)}.climb
+    flashes.max_by{ |x| GRADES.index(x.climb.grade)}.climb
   end
 
   def has_flash 
-
+    !flashes.empty?
   end
 
   private
 
   def flashes
-
+    sends.select{|send| send.attempts == 1}
   end
   
 

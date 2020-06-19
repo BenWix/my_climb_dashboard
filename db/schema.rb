@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_221807) do
+ActiveRecord::Schema.define(version: 2020_06_19_172635) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +55,23 @@ ActiveRecord::Schema.define(version: 2020_06_16_221807) do
     t.string "content"
     t.string "user_id"
     t.string "post_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "exercises", force: :cascade do |t|
+    t.integer "hangboard_id"
+    t.string "hold"
+    t.integer "reps"
+    t.integer "difficulty"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "hangboards", force: :cascade do |t|
+    t.integer "weight"
+    t.integer "user_id"
+    t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

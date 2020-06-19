@@ -1,0 +1,9 @@
+<h1>Hangboard Exercises</h1>
+
+<% @hangboards.each do |hang|%>
+    <h3>Exercise on <%=hang.date_display %></h3>
+    <h3>Hang Count: <%= hang.exercises.count %></h3>
+    
+
+
+<% end %>
