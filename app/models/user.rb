@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :sends
   has_many :climbs, through: :sends
   has_many :send_comments
+  has_mnay :hangboards
 
   def self.from_omniauth(auth)
     # binding.pry

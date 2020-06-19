@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
       resources :posts, only: [:index, :new, :create]
       resources :sends, only: [:index, :show, :delete] 
+      resources :hangboards, only: [:index, :show, :new, :create]
     end
 
     resources :posts
