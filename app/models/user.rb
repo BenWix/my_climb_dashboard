@@ -17,6 +17,7 @@ class User < ApplicationRecord
       user.name = auth.info.name
       user.uid = auth.uid
       user.email = auth.info.email 
+      user.bio = ""
       user.password = Devise.friendly_token[0,20]
     end
   end
@@ -34,9 +35,28 @@ class User < ApplicationRecord
     if self.sends.length < return_count
       self.sends
     else 
-      self.sends.find(:all, :order => "id desc", limit: return_count)
+      self.sends.order('id desc').limit(return_count)
     end
   end
+
+  def hardest_climb
+    climbs.max_by{ |x| GRADES.index(x.grade)}
+  end
+
+  def hardest_flash 
+    sends.select{|send| send.attempts == 1}.max_by{ |x| GRADES.index(x.climb.grade)}.climb
+  end
+
+  def has_flash 
+
+  end
+
+  private
+
+  def flashes
+
+  end
+  
 
 
 end

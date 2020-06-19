@@ -1,4 +1,4 @@
-<h1><%= @send.user.display_name %> completed<%= @send.climb.name %></h1>
+<h1><%= @send.user.display_name %> completed <%= @send.climb.name %></h1>
 <h3><%= @send.attempts_display %></h3>
 <p><%= @send.description %></p>
 <%= link_to "#{@send.user.display_name}'s other sends", user_sends_path(@send.user) %>
@@ -6,17 +6,3 @@
   <p>You can modify or delete this send</p>
 <% end %>
 
-<ul>
-  <% @send.send_comments.each do |comment|%>
-    <li><%= comment.content %> - <%= comment.user.name %></li>
-  <% end %>
-
-</ul>
-
-<%= form_for @send_comment do |f| %>
-    <label><strong>Comment: </strong></label>
-    <%= f.text_area :content %>
-    <br>
-    <%= f.hidden_field :send_id %>
-    <%= f.submit %>
-<% end %>

@@ -3,17 +3,29 @@
 <% if @user == current_user %>
     <%= link_to 'New Post', new_user_post_path(current_user) %>
     <br>
-    <% if @user.name.empty? || @user.bio.empty? %>
+    <% if @user.name.empty? || @user.bio.nil? || @user.bio.empty? %>
         <p>Your profile is incomplete, please edit your profile to fill in the missing fields</p>
     <% end %>
-    <%= link_to 'Edit Profile', edit_user_path(@user) %>
+    <%= link_to 'Edit Profile', edit_user_path(current_user) %>
 <% end %>
 
 <h3>Latest Climbs</h3>
 <ul>
     <% @user.recent_sends.each do |send| %>
-        <li><%= link_to 'send.climb.name', user_send_path(send) %></li>
+        <li><%= link_to "#{send.climb.name}", user_send_path(send) %></li>
     <% end %>
 </ul>
+<h3>Climber Stats</h3>
+<ul>
+    <li>Climbs Completed: <%= @user.climbs.count %></li>
+    <% if @user.climbs.count > 0 %>
+        <li>Hardest Climb: <%= @user.hardest_climb.name %></li>
+    <% end %>
+    <% if @user.has_flash %>
+        <li>Hardest Flash: <%= @user.hardest_flash.name %></li>
+    <% end %>
+</ul>
+
+
 <br>
 <%= link_to "#{@user.display_name}'s posts", user_posts_path(@user) %>
