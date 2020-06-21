@@ -10,14 +10,9 @@
     <%= link_to 'Edit Profile', edit_user_path(current_user) %>
 <% end %>
 
-<h3>Latest Climbs</h3>
-<ul>
-    <% @user.recent_sends.each do |send| %>
-        <li><%= link_to "#{send.climb.name}", user_send_path(send) %></li>
-    <% end %>
-</ul>
 <h3>Climber Stats</h3>
 <ul>
+    <li>Hangboard Sessions: <%= @user.hangboards.count %></li>
     <li>Climbs Completed: <%= @user.climbs.count %></li>
     <% if @user.climbs.count > 0 %>
         <li>Hardest Climb: <%= @user.hardest_climb.name %></li>
@@ -26,7 +21,18 @@
         <li>Hardest Flash: <%= @user.hardest_flash.name %></li>
     <% end %>
 </ul>
+<h3>Latest Climbs</h3>
+<ul>
+    <% @user.recent_sends.each do |send| %>
+        <li><%= link_to "#{send.climb.name}", user_send_path(send) %></li>
+    <% end %>
+</ul>
+
+
+
 
 
 <br>
+<%= link_to "#{@user.display_name}'s Rock Climbs", user_sends_path(@user) %> <br>
+<%= link_to "#{@user.display_name}'s Hangboard Sessions", user_hangboards_path(@user) %> <br>
 <%= link_to "#{@user.display_name}'s posts", user_posts_path(@user) %>
