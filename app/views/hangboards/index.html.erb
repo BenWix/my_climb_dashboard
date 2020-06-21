@@ -1,9 +1,17 @@
 <h1>Hangboard Exercises</h1>
 
 <% @hangboards.each do |hang|%>
-    <h3>Exercise on <%=hang.date_display %></h3>
+    <h2><strong>Exercise on <%=hang.date_display %></strong></h2>
     <h3>Hang Count: <%= hang.exercises.count %></h3>
-    
+    <% if hang.user == current_user %>
+      <%= link_to 'Edit this Hangboard', edit_hangboard_path(hang) %> <br>
+      <%= link_to "Delete this hangboard", hang, method: :delete %>
+    <% end %>
+    <ul>
+    <% hang.exercises.each do |exercise|%>
+        <li><strong><%= exercise.hold %></strong>, <%= exercise.reps %> reps at <%= exercise.weight %> lbs</li>
+    <% end %>
+    </ul>
 
 
 <% end %>

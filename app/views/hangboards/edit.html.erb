@@ -1,0 +1,21 @@
+<h1>Edit a Hangboard Workout</h1>
+
+<%= form_for @hangboard do |f| %>
+    <label><strong>Weight: </strong></label>
+    <%= f.number_field(:weight, min: 1) %> <br>
+
+    <label><strong>Date: </strong></label>
+    <%= f.date_field :date %> <br>
+
+    <%= f.hidden_field :user_id %>
+
+    <ul>
+    <% @hangboard.exercises.each do |exercise|%>
+        <li><strong><%= exercise.hold %></strong>, <%= exercise.reps %> reps at <%= exercise.weight %> lbs</li>
+        <%= link_to 'Edit this Exercise', edit_exercise_path(exercise) %>
+    <% end %>
+    </ul>
+
+    <%= f.submit "Log Workout"%>
+
+<% end %>

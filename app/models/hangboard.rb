@@ -9,7 +9,6 @@ class Hangboard < ApplicationRecord
     end
 
     def exercises_attributes=(exercises)
-        binding.pry
         exercises.values.each do |exercise|
             self.exercises.build(exercise)
         end
