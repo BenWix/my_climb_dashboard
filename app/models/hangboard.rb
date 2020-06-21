@@ -8,6 +8,13 @@ class Hangboard < ApplicationRecord
         super(DateTime.new(*date_ints))
     end
 
+    def exercises_attributes=(exercises)
+        binding.pry
+        exercises.values.each do |exercise|
+            self.exercises.build(exercise)
+        end
+    end
+
     def date_display
         self.date.strftime("%m/%d/%Y")
     end

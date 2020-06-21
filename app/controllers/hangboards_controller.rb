@@ -25,17 +25,20 @@ class HangboardsController < ApplicationController
         binding.pry
         @hangboard = Hangboard.new(hangboard_params)
         if @hangboard.save
+            binding.pry
             redirect_to user_hangboards_path(@hangboard.user)
         else 
             render :new
         end
     end 
 
+
+
     private 
 
     def hangboard_params
         params.require(:hangboard).permit(:weight, :date, :user_id, exercises_attributes: [
-            :hold, :reps, :difficulty
+            :hold, :reps, :difficulty, :weight
         ])
     end
 

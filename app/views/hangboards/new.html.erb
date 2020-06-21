@@ -8,19 +8,24 @@
     <%= f.date_field :date %> <br>
 
     <%= f.hidden_field :user_id %>
-    
-    <%= f.fields_for :exercises, @hangboard.exercises.build do |ex| %>
-        <%= ex.label :hold %>
-        <%= ex.select :hold, @holds %>
-        <br>
-        <%= ex.label :reps %>
-        <%= ex.number_field(:reps, min: 1) %>
-        <br>
-        <%= ex.label :difficulty %>
-        <%= ex.number_field(:difficulty, min: 1) %>
-        <br>
+    <% 3.times do %>
+        <%= f.fields_for :exercises, @hangboard.exercises.build do |ex| %>
+            <%= ex.label :hold %>
+            <%= ex.select :hold, @holds %>
+            <br>
+            <%= ex.label :reps %>
+            <%= ex.number_field(:reps, min: 1) %>
+            <br>
+            <%= ex.label :difficulty %>
+            <%= ex.number_field(:difficulty, min: 1, max: 10) %>
+            <br>
+            <%= ex.label :weight %>
+            <%= ex.number_field(:weight) %>
+
+            <br>
+        <% end %>
     <% end %>
 
-    <%= f.submit %>
+    <%= f.submit "Log Workout"%>
 
 <% end %>
