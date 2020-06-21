@@ -1,2 +1,9 @@
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="container">
+    <p>Test</p>
+    <% unless !!notice %>
+        <p class="notice"><%= notice %></p>
+    <% end %>
+    <% unless !!alert %>
+        <p class="alert"><%= alert %></p>
+    <% end %>
+    </div>

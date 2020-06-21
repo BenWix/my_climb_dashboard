@@ -12,8 +12,10 @@
   <body class="d-flex flex-column h-100">
     <%= render "layouts/navbar" %>
     <main role="main" class="flex-shrink-0">
+
+      <br> <br> <br>
+      <%= render 'layouts/alerts' %>
       <div class="container">
-        <%= render 'layouts/alerts' %>
         <%= yield %>
       </div>
     </main>
