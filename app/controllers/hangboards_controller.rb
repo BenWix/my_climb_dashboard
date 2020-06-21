@@ -1,5 +1,5 @@
 class HangboardsController < ApplicationController
-    before_action :set_hangboard, only: [:edit, :update, :delete, :show]
+    before_action :set_hangboard, only: [:edit, :update, :destroy, :show]
     def index
         if params[:user_id]
             @hangboards = User.find_by_id(params[:user_id]).hangboards
@@ -42,8 +42,14 @@ class HangboardsController < ApplicationController
         end
     end
 
-    def delete 
-
+    def destroy 
+        if @hangboard.user == current_user
+        @hangboard.destroy 
+            flash[:alert] = "Hangboard Session Successfully Deleted."
+        else
+            flash[:alert] = "You cannot delete a Hangboard session that does not belong to you." 
+        end
+        redirect_to root_path
     end
 
 
