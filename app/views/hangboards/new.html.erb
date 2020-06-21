@@ -1,12 +1,16 @@
 <h1>Let's log a new hangboard workout</h1>
+<%= render "errors" %>
 
 <%= form_for @hangboard do |f| %>
-    <label><strong>Weight: </strong></label>
-    <%= f.number_field(:weight, min: 1) %> <br>
-
-    <label><strong>Date: </strong></label>
-    <%= f.date_field :date %> <br>
-
+    <div class="field<%= ' field_with_errors' if @hangboard.errors[:weight].any? %>">
+        <label><strong>Weight: </strong></label>
+        <%= f.number_field(:weight, min: 1) %> <br>
+    </div>
+    <div class="field<%= ' field_with_errors' if @hangboard.errors[:date].any? %>">
+        <label><strong>Date: </strong></label>
+        <%= f.date_field :date %> <br>
+    </div>
+    
     <%= f.hidden_field :user_id %>
     <% 3.times do %>
         <%= f.fields_for :exercises, @hangboard.exercises.build do |ex| %>

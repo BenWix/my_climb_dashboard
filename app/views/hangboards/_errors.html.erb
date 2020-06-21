@@ -1,0 +1,9 @@
+<% if @hangboard.errors.any? %>
+    <div class="fields_with_errors">
+        <ul>
+            <% @hangboard.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
