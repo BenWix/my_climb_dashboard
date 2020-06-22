@@ -44,7 +44,7 @@ class HangboardsController < ApplicationController
 
     def destroy 
         if @hangboard.user == current_user
-        @hangboard.destroy 
+            @hangboard.destroy 
             flash[:alert] = "Hangboard Session Successfully Deleted."
         else
             flash[:alert] = "You cannot delete a Hangboard session that does not belong to you." 

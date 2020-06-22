@@ -1,4 +1,5 @@
 class SendsController < ApplicationController
+    before_action :set_send, only: [:show, :edit, :update, :destroy]
     def index
         if params[:user_id]
             @user = User.find_by_id(params[:user_id])
@@ -10,7 +11,6 @@ class SendsController < ApplicationController
     
     
     def show 
-        @send = Send.find_by_id(params[:id])
     end
 
     def new 
@@ -30,7 +30,38 @@ class SendsController < ApplicationController
         end
     end
 
+    def edit 
+        unless @send.user == current_user
+            flash[:alert] = "You can only edit your own send"
+            redirect_to root_path
+        end
+
+    end
+
+    def update 
+        @send.update(send_params)
+        if @send.save
+            redirect_to user_send_path(@send.user, @send)
+        else 
+            render :edit
+        end
+    end
+
+    def destroy 
+        if @send.user == current_user
+            @send.destroy 
+            flash[:alert] = "Send Successfully Deleted."
+        else
+            flash[:alert] = "You cannot delete a Send that does not belong to you." 
+        end
+        redirect_to root_path
+    end
+
     private 
+
+    def set_send 
+        @send = Send.find_by_id(params[:id])
+    end
 
     def send_params
         params.require(:send).permit(:climb_id, :attempts, :description)

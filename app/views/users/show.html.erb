@@ -24,7 +24,7 @@
 <h3>Latest Climbs</h3>
 <ul>
     <% @user.recent_sends.each do |send| %>
-        <li><%= link_to "#{send.climb.name}", user_send_path(send) %></li>
+        <li><%= link_to "#{send.climb.name}", user_send_path(send.user,send) %></li>
     <% end %>
 </ul>
 

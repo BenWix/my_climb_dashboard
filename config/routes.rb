@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
     resources :comments, only: [:create]
 
-    resources :send_comments, only: [:create]
+    resources :sends, only: [:edit, :update, :destroy]
 
     resources :exercises, only: [:edit, :update, :delete]
 

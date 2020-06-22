@@ -1,0 +1,12 @@
+<%= form_for @send do |f| %>
+    <label><strong>Attempts:</strong></label>
+    <%= f.number_field(:attempts, min: 1) %> <br>
+
+    <label><strong>Description:</strong></label>
+    <%= f.rich_text_area :description %>
+    
+    <%= f.hidden_field :climb_id %>
+
+    <%= f.submit %>
+
+<% end %>
