@@ -2,7 +2,7 @@ class ClimbsController < ApplicationController
     before_action :set_climb, only: [:show]
     
     def index 
-        @climbs = Climb.all
+        @climbs = Climb.all.sort_by{|climb| climb.name}
     end
     
     def show 

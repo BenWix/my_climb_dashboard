@@ -1,7 +1,9 @@
 # README
+#My Climb Dashboard
 My Climb Dashboard is an application to help users log quantifiable progress with their climbing training journey. 
 
-At this point there are three things that users can do to log their progress or document their journey.
+###Features
+There are three factors that users can log to track their progress or document their journey.
 
 -Users may log routes that they have completed so they can see and track all climbs they have completed,
     currently the user can see the hardest climb they have completed and their most difficult flash 
@@ -18,5 +20,9 @@ At this point there are three things that users can do to log their progress or 
 -Users can create posts where other users can comment. This is designed for users to be able to share
     what aspects of their training has been successful and what has not. 
 
-Hopefully in the future this program can be full of many more features, but at the moment it is still a
-great resource for users to track all of their progress.
+###Installation
+To use and install my climb dashboard, first clone and download this repository then navigate to the repository in your terminal. Then run 
+```bundle install```
+to install the approprite gems. Finally run 
+```rails s```
+to start the server. If you navigate to localhost:3000, you should be able to use My Climb Dashboard  
